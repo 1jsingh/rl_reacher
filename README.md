@@ -3,6 +3,7 @@ Train double-jointed arms to reach target locations using Multi-agent RL in Pyto
 
 ## Agent Output Demo
 
+![Trained_agent](images/trained_agent.gif)
 
 ## Reacher Environment
 * Set-up: Double-jointed arm which can move to target locations.
@@ -16,3 +17,22 @@ Train double-jointed arms to reach target locations using Multi-agent RL in Pyto
   * Visual Observations: None.
 * Reset Parameters: Two, corresponding to goal size, and goal movement speed.
 * Benchmark Mean Reward: 30
+
+## Getting Started
+
+1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
+
+    - **_Version 1: One (1) Agent_**
+        - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Linux.zip)
+        - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher.app.zip)
+        - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Windows_x86.zip)
+        - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Windows_x86_64.zip)
+
+    - **_Version 2: Twenty (20) Agents_**
+        - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
+        - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
+        - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86.zip)
+        - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86_64.zip)
+        
+        
+        
