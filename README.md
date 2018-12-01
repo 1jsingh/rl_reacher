@@ -3,6 +3,7 @@ Train double-jointed arms to reach target locations using Multi-agent RL in Pyto
 
 ## Agent Output Demo
 
+![Trained_agent](images/trained_agent.gif)
 
 ## Reacher Environment
 * Set-up: Double-jointed arm which can move to target locations.
