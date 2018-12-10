@@ -1,5 +1,4 @@
 *.sh
 *.app
-Reacher_Linux_NoVis
-Reacher*
 *.log
+unity_envs
