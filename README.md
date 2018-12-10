@@ -18,6 +18,13 @@ Train double-jointed arms to reach target locations using Multi-agent RL in Pyto
 * Reset Parameters: Two, corresponding to goal size, and goal movement speed.
 * Benchmark Mean Reward: 30
 
+## Project Structure
+* `model.py`: code for actor and critic class
+* `ddpg.py`: DDPG agent with experience replay and OU Noise
+* `Continuous_Control.ipynb`: notebook for training your own RL agent
+* `trained_agent_visualize`: notebook for visualising your trained agent
+* `unity_envs`: directory for Reacher unity environments
+* `trained_models`: directory for saving trained RL agent models
 ## Getting Started
 
 1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
@@ -37,7 +44,15 @@ Train double-jointed arms to reach target locations using Multi-agent RL in Pyto
         (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Linux_NoVis.zip) (version 1) or [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux_NoVis.zip) (version 2) to obtain the "headless" version of the environment.  You will **not** be able to watch the agent without enabling a virtual screen, but you will be able to train the agent.  (_To watch the agent, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)
        
 2. Place the downloaded file in the main directory and unzip it.
-3. Follow the step by step instructions in the `Continuous_Control.ipynb` notebook.
+3. Follow the step by step instructions in the `Continuous_Control.ipynb` notebook to train your own agent.
+
+### Distributed Training
+
+There are two separate versions of the Unity environment:
+- The first version contains a single agent.
+- The second version contains 20 identical agents, each with its own copy of the environment.  
+
+The second version is useful for algorithms like [PPO](https://arxiv.org/pdf/1707.06347.pdf), [A3C](https://arxiv.org/pdf/1602.01783.pdf), and [D4PG](https://openreview.net/pdf?id=SyZipzbCb) that use multiple (non-interacting, parallel) copies of the same agent to distribute the task of gathering experience.
         
         
         
