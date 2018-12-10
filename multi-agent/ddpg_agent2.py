@@ -13,16 +13,64 @@ BUFFER_SIZE = int(1e5)  # replay buffer size
 BATCH_SIZE = 128        # minibatch size
 GAMMA = 0.999           # discount factor
 TAU = 1e-3              # for soft update of target parameters
-LR_ACTOR = 1e-4        # learning rate of the actor 
+LR_ACTOR = 1e-4         # learning rate of the actor 
 LR_CRITIC = 1e-3        # learning rate of the critic
 WEIGHT_DECAY = 0        # L2 weight decay
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+LEARN_EVERY=20
+LEARN_TIMES=10
+
+class MultiAgent():
+
+    def __init__(self, num_agents, state_size, action_size, random_seed):
+
+        self.num_agents = num_agents
+
+        # Replay memory
+        self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, random_seed)
+
+        # define all the agents
+        self.agents = []
+        for i in range(self.num_agents):
+            agent = Agent(state_size, action_size, self.memory, random_seed)
+            self.agents.append(agent)
+
+        # counter for time steps
+        self.time_step = 0
+
+
+    def step(self, state, action, reward, next_state, done):
+        for i in range(self.num_agents):
+            # Save experience / reward
+            self.memory.add(state[i], action[i], reward[i], next_state[i], done[i])
+            
+        if self.time_step % LEARN_EVERY==0:
+            choose_agents = np.random.choice(range(self.num_agents),LEARN_TIMES,replace=False)
+            #print (self.time_step,choose_agents)
+            for j in choose_agents:
+                self.agents[j].step()
+
+        self.time_step+=1
+
+    def act(self, states):
+        actions = []
+        for i in range(self.num_agents):
+            actions.append(self.agents[i].act(states[i]))
+
+        return np.array(actions)
+
+    def reset(self):
+        for i in range(self.num_agents):
+            self.agents[i].reset()
+        # reset time step count
+        self.time_step=0
+
 class Agent():
     """Interacts with and learns from the environment."""
     
-    def __init__(self, state_size, action_size, random_seed):
+    def __init__(self, state_size, action_size, memory, random_seed):
         """Initialize an Agent object.
         
         Params
@@ -49,16 +97,14 @@ class Agent():
         self.noise = OUNoise(action_size, random_seed)
 
         # Replay memory
-        self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, random_seed)
+        self.memory = memory
 
         self.soft_update(self.critic_local, self.critic_target, 1.0)
         self.soft_update(self.actor_local, self.actor_target, 1.0)
     
-    def step(self, state, action, reward, next_state, done):
+    def step(self):
         """Save experience in replay memory, and use random sample from buffer to learn."""
-        # Save experience / reward
-        self.memory.add(state, action, reward, next_state, done)
-
+        
         # Learn, if enough samples are available in memory
         if len(self.memory) > BATCH_SIZE:
             experiences = self.memory.sample()
