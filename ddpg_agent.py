@@ -85,7 +85,7 @@ class Agent():
         with torch.no_grad():
             for agent_num, state in enumerate(states):
                 action = self.actor_local(state).cpu().data.numpy()
-                actions[agent_num, :] = action
+                actions[agent_num] = action
         self.actor_local.train()
         if add_noise:
             actions += self.noise.sample()
@@ -156,8 +156,8 @@ class OUNoise:
         self.mu = mu * np.ones(size)
         self.theta = theta
         self.sigma = sigma
-        self.seed = random.seed(seed)
         self.size = size
+        self.seed = random.seed(seed)
         self.reset()
 
     def reset(self):
