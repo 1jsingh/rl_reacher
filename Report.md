@@ -36,6 +36,6 @@ The Avg reward for last 100 episodes = 34.27
 ![reward_plot](images/reward_plot)
 
 ### Future directions for improvement
-* Use a prioritised experience replay
+* ~~Use a prioritised experience replay~~
 * Add noise to Actor, Critic hyperparameters
 * Use separate ddpg agents with a centralized critic
