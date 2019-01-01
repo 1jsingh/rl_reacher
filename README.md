@@ -34,7 +34,7 @@ Train double-jointed arms to reach target locations using Multi-agent RL in Pyto
 1. Clone the repository (if you haven't already!), and navigate to the `python/` folder.  Then, install several dependencies.
 ```bash
 git clone https://github.com/1jsingh/rl_reacher.git
-cd rl_navigation/python
+cd rl_reacher/python
 pip install .
 ```
 
