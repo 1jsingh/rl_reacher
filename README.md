@@ -4,8 +4,8 @@ Train double-jointed arms to reach target locations using Proximal Policy Optimi
 ## Table of Contents
 
 * [Agent Output Demo](#agent-output-demo)
-  - [single agent](#single-agent)
-  - [Multiple Agents](#multiplt-agents)
+  - [Single agent](#single-agent)
+  - [Multiple Agents](#multiple-agents)
 * [Reacher Environment](reacher-environment)
 * [Setup](#setup)
     * [System Configuration](#system-configuration)
@@ -93,9 +93,9 @@ cd rl_reacher
 
 ## Reward Curve
 * PPO agent
-  <img src='images/reward_curve-ppo.png' alt='reward_curve-ppo' height='200' width='200'>
+  <img src='images/reward_curve-ppo.png' alt='reward_curve-ppo'>
 * DDPG agent
-  <img src='images/reward_curve-ddpg.png' alt='reward_curve-ddpg' height='200' width='200'>
+  <img src='images/reward_curve-ddpg.png' alt='reward_curve-ddpg'>
 
 ***Note: DDPG has higher sample efficiency than PPO***
 
