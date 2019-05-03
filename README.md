@@ -54,7 +54,7 @@ Though not tested, the project can still be expected to work out of the box for 
 
 * Create separate virtual environment for the project using the provided `environment.yml` file
 ```
-conda create -f environment.yml
+conda env create -f environment.yml
 conda activate reacher
 ```
 
